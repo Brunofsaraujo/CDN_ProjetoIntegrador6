@@ -8,7 +8,7 @@ Projeto Integrador VI · FATEC Votorantim · 2º Semestre/2026
 
 | # | Notebook | Responsabilidade | Entrada | Saída |
 |:-:|:---|:---|:---|:---|
-| 01 | `Chopp_Risco_01_Ingestao_v1.0` | dump do ERP → tabela versionada | `.sql` | `dataset_consolidado_v<VER>` |
+| 01 | `Chopp_Risco_01_Ingestao_v1.0` | CSV consolidado → tabela versionada | `.csv` | `dataset_consolidado_v<VER>` |
 | 02 | `Chopp_Risco_02_EDA_v1.0` | entender a carteira e o risco | tabela do 01 | análises (não escreve dado) |
 | 03 | `Chopp_Risco_03_Preparacao_v1.0` | alvo + split congelado | tabela do 01 | `dataset_split_<HASH>` |
 | 04 | `Chopp_Risco_04_Modelo_Regressao_v1.0` | Regressão Logística | split do 03 | runs MLflow + modelo |
@@ -24,7 +24,7 @@ acoplamento é por **dado** (nome de tabela), não por código.
 
 ```
    01 Ingestão                      DATA_VERSION = "1.0"
-        │                           ↓ incremente ao mudar contrato ou regra
+        │                           ↓ incremente ao trocar o CSV ou o contrato
         │   publica
         ▼
    dataset_consolidado_v1_0  ────────────┐
@@ -54,35 +54,19 @@ parâmetros conforme o ambiente:
 | Ambiente | Mecanismo |
 |:---|:---|
 | **Databricks** | `dbutils.widgets` — campos no topo do notebook |
-| **Local** (VS Code / Jupyter) | diálogo de seleção do Windows, memorizado depois |
+| **Local** (VS Code / Jupyter) | diálogo de seleção do Windows |
 
 **No Databricks:**
 
-1. **01** — preencha `catalogo`, `schema`, `data_version` e o caminho do `.sql` no
+1. Faça upload do CSV consolidado em um Volume.
+2. **01** — preencha `catalogo`, `schema`, `data_version` e o caminho do CSV no
    Volume. Ao final, ele imprime o nome da tabela publicada.
-2. **02** e **03** — preencha `catalogo`, `schema` e `data_version` (a mesma do 01).
-3. **03** — ao final, imprime o `SPLIT_HASH`. Cole-o no campo `split_hash` dos
+3. **02** e **03** — preencha `catalogo`, `schema` e `data_version` (a mesma do 01).
+4. **03** — ao final, imprime o `SPLIT_HASH`. Cole-o no campo `split_hash` dos
    **04, 05 e 06**.
 
-**Localmente:** a primeira execução de cada notebook abre um diálogo para escolher o
-arquivo. A escolha fica memorizada em `~/.chopp_risco_params.json`, e as execuções
-seguintes não perguntam nada.
-
-> ⚠️ **A janela abre atrás do VS Code.** É comportamento conhecido do `tkinter` no
-> Windows: ela nasce sem foco. Se a célula parecer travada, procure o ícone do Python
-> na barra de tarefas.
-
-**Se o seletor não abrir**, não lute com ele: preencha `CAMINHOS_MANUAIS` no topo da
-célula de parametrização e o diálogo deixa de ser usado.
-
-```python
-CAMINHOS_MANUAIS = {
-    "sql_file": r"C:\dados\DB_POWER_SYS.sql",
-}
-```
-
-O que estiver ali tem precedência sobre o cache e sobre o diálogo. Para trocar de
-arquivo depois de uma escolha memorizada, use `FORCAR_SELECAO = True`.
+**Localmente:** a primeira célula de código abre o seletor do Windows. O notebook 03
+salva o split ao lado do CSV consolidado.
 
 Os notebooks 04-06 **recusam-se a rodar** sem o split definido — apontar para a
 partição errada invalidaria a comparação entre os modelos.
@@ -95,13 +79,13 @@ Todo run do MLflow carrega as três. Uma diferença de métrica sempre tem ender
 
 | Hash | Definido em | Cobre | Responde |
 |:---|:---|:---|:---|
-| `DATA_VERSION` | 01 (manual) | a carga do banco | *quais dados?* |
+| `DATA_VERSION` | 01 (manual) | o CSV consolidado publicado | *quais dados?* |
 | `SPLIT_HASH` | 03 (automático) | universo + alvo + partição | *quais linhas, com qual rótulo?* |
 | `CONFIG_HASH` | 04-06 (automático) | hiperparâmetros | *qual configuração?* |
 
 ### Quando incrementar `DATA_VERSION`
 
-Sempre que mudar o contrato de colunas, uma regra de negócio ou o dump de origem.
+Sempre que mudar o contrato de colunas ou substituir o CSV consolidado de origem.
 Cada versão vira uma **tabela nova**; as antigas continuam existindo, e é isso que
 mantém reproduzíveis os experimentos que apontam para elas.
 
@@ -172,9 +156,9 @@ Parâmetros por notebook:
 
 | Notebook | Parâmetros |
 |:---|:---|
-| 01 | `sql_file`, `output_dir`, `catalogo`, `schema`, `data_version` |
-| 02 | `catalogo`, `schema`, `data_version`, `csv_consolidado` |
-| 03 | `catalogo`, `schema`, `data_version`, `csv_consolidado`, `output_dir` |
+| 01 | `csv_consolidado`, `catalogo`, `schema`, `data_version` |
+| 02 | `catalogo`, `schema`, `data_version` |
+| 03 | `catalogo`, `schema`, `data_version` |
 | 04-06 | `split_hash`, `csv_split`, `catalogo`, `schema`, `estudo`, `experiment_name` |
 
 ---
@@ -195,7 +179,7 @@ Três camadas garantem isso:
 
 | Camada | Onde | O que faz |
 |:---|:---|:---|
-| Contrato de colunas | 01 | as colunas não são sequer lidas do dump |
+| Contrato de colunas | 01 | valida o CSV e rejeita colunas ausentes ou nominais |
 | Guarda de identificação | 03 | aborta se uma coluna nominal virar feature |
 | Exclusão por padrão | 04-06 | qualquer coluna nominal é excluída ao deduzir as features |
 
