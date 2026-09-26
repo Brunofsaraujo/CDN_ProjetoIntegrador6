@@ -1,0 +1,8 @@
+Olá professor, 
+segue abaixo alguns comentários do nosso grupo sobre os arquivos que temos até o momento:
+
+* Criamos duas novas atas, uma delas vai ser assinada novamente e subimos o arquivo final assim que possível;
+* Os arquivos de deploy e guia de usuário são do semestre passado, vamos atualizar nas próximas semanas;
+* A v1 do relatório final ainda está sendo trabalhada, até o momento temos as seguintes alterações:
+	* Atualização do tópico Extração (Anonimização e Att dos dados + LGPD), da metodologia e da engenharia de atributos;
+        * EDA Atualizado considerando impacto das variáveis de negócio utilizadas - Resultados e comparação do desempenho dos modelos como 	próximo passos.
