@@ -240,6 +240,8 @@ mlartifacts/
 Site/data/
 Site/modelo/
 Site/restrito/
+# pacote de upload do PythonAnywhere (pi6_dados.zip) leva modelo e carteira
+*.zip
 
 # Windows / Office
 Thumbs.db
