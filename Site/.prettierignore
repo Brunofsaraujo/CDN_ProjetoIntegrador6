@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Flask static build
+dist/
+build/
+
+# Node (caso use futuramente)
+node_modules/
+
+# arquivos gerados
+*.min.js
+*.min.css
+
+# logs
+*.log
+
+# banco local
+*.db
+*.sqlite3
+
+# migrations
+migrations/

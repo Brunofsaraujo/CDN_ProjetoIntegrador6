@@ -1,0 +1,9 @@
+{
+	"host": "https://<seu-workspace>.cloud.databricks.com",
+	"token": "dapi...  (copie para instance/databricks.json — nunca versione o token)",
+	"warehouse_id": "<id do SQL warehouse>",
+	"tabela": "projetointegrador.projetointegrador.dataset_consolidado_v1_0",
+	"volume": "/Volumes/projetointegrador/projetointegrador/artefatos",
+	"arquivo_modelo": "modelo_campeao_v1_0.pkl",
+	"pasta_graficos": "graficos"
+}

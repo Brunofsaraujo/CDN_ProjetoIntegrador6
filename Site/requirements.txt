@@ -1,0 +1,13 @@
+# Instalação mínima, sem cache e sem .pyc:
+#   pip install --no-cache-dir --no-compile -r requirements.txt
+#
+--only-binary=:all:
+
+# web
+Flask==3.1.2
+Werkzeug==3.1.3
+Flask-Login==0.6.3
+requests==2.33.1
+scikit-learn==1.7.2
+numpy==2.3.2
+pandas==2.3.1
