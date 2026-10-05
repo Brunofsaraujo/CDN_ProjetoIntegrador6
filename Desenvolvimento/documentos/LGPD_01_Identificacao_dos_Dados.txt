@@ -1,0 +1,29 @@
+O art. 5º, I, da LGPD define dado pessoal como a "informação relacionada a pessoa natural identificada ou
+identificável". O ERP da Chopp & Cia classifica os clientes como pessoa física, pessoa jurídica ou estrangeiro. As
+pessoas físicas e os estrangeiros que são pessoas naturais, na maioria cadastrados como consumidor final, são titulares
+(art. 5º, V). Pessoas jurídicas e empresas estrangeiras ficam fora da definição. O backup recebido do ERP contém nome,
+CPF, CNPJ, RG, data de nascimento e endereço completo, mas a extração lê apenas as colunas de um contrato fechado, e
+nenhuma dessas é lida. Do endereço, entra somente a cidade. O resultado é uma linha por cliente, identificada pelo
+código interno ID_PESSOA, com dados cadastrais, histórico de compras, pagamentos e comodatos, e com uma classificação de
+risco calculada a partir dos atrasos. Na preparação, o modelo passa a usar 15 dessas variáveis, além do rótulo
+ALTO_RISCO. Guardar o backup, extrair colunas e classificar clientes são, todas elas, operações de tratamento (art. 5º,
+X).
+
+A retirada do nome não torna os dados anônimos. Pelo art. 5º, III, só é anonimizado o dado cujo titular "não possa ser
+identificado, considerando a utilização de meios técnicos razoáveis e disponíveis na ocasião de seu tratamento". O que o
+projeto faz é pseudonimização, técnica que a própria LGPD descreve no art. 13, § 4º: o dado perde a associação com o
+indivíduo, "senão pelo uso de informação adicional mantida separadamente pelo controlador em ambiente controlado e
+seguro". É o caso do ID_PESSOA, que a Chopp & Cia, como controladora, consegue religar ao cadastro completo no ERP. Além
+disso, a cidade e as datas de compra, combinadas, ajudam a individualizar o cliente. Os dados, portanto, seguem sendo
+pessoais e sujeitos à lei (art. 12). O rótulo de risco também entra nessa categoria: o art. 12, § 2º, admite como dado
+pessoal aquele "utilizado para formação do perfil comportamental de determinada pessoa natural, se identificada".
+
+Os dados não são sensíveis. O art. 5º, II, limita essa categoria ao dado sobre "origem racial ou étnica, convicção
+religiosa, opinião política, filiação a sindicato ou a organização de caráter religioso, filosófico ou político, dado
+referente à saúde ou à vida sexual, dado genético ou biométrico". Nenhuma variável do projeto entra nessa lista. São
+dados comerciais e financeiros, tratados pelas bases legais do art. 7º, e não pelo regime do art. 11.
+
+Dois cuidados permanecem. Se o resultado do modelo for usado em decisões tomadas unicamente de forma automatizada sobre
+o perfil de crédito do cliente, o titular pode pedir a revisão dessas decisões (art. 20). Além disso, a categoria
+estrangeiro e a cidade de Pedro Juan Caballero podem indicar nacionalidade de forma indireta, o que exige atenção ao
+princípio da não discriminação (art. 6º, IX).

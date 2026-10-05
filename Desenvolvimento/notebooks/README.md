@@ -78,15 +78,43 @@ ficar vazia, o CSV é gravado ao lado do `.sql`.
 `DATA_VERSION` nomeia todos os arquivos e tabelas, e é o que mantém reproduzível
 um resultado de ontem: cada versão vira arquivo próprio, nada é sobrescrito.
 
-**A versão corrente é a 1.1.** Ela corrige três filtros do ERP que a 1.0 não
-aplicava — registro inativo (`FL_ATIVO`), tipo de operação (o dump traz
-movimentação de comodato na mesma tabela dos itens vendidos) e pessoa que não é
-cliente. O efeito é grande nas features de RFM: `FREQUENCIA_COMPRAS` caiu ~50% e
-`TICKET_MEDIO` dobrou, porque o denominador deixou de contar comodato como compra.
+**A versão corrente é a 1.0** (`dataset_consolidado_v1_0`, `modelo_campeao_v1_0`),
+e ela já inclui os três filtros do ERP que a extração original não aplicava —
+registro inativo (`FL_ATIVO`), tipo de operação (o dump traz movimentação de
+comodato na mesma tabela dos itens vendidos) e pessoa que não é cliente. O efeito
+é grande nas features de RFM: `FREQUENCIA_COMPRAS` caiu ~50% e `TICKET_MEDIO`
+dobrou, porque o denominador deixou de contar comodato como compra.
 
 Um efeito colateral: `MIN_COMPRAS` no notebook 04 passou de 2 para 0. O corte
 antigo fora calibrado sobre a frequência inflada; com a contagem correta ele
 deixava 332 clientes e 6 casos na classe rara — validação cruzada inviável.
+
+## Artefatos de produção (o que o site consome)
+
+O site (`Site/`) lê de uma de duas fontes, escolhida em `/admin/fonte`. Cada
+artefato tem um único notebook responsável:
+
+| artefato | quem grava | local | Databricks |
+|:---|:---|:---|:---|
+| consolidado | 01 (local) → 02 | `Desenvolvimento/data/dataset_consolidado_v1_0.csv` | tabela `projetointegrador.projetointegrador.dataset_consolidado_v1_0` |
+| modelo `.pkl` + model card | 08 | `Desenvolvimento/data/` e cópia em `Site/modelo/` (`PASTA_SITE_MODELO`) | `/Volumes/projetointegrador/projetointegrador/artefatos/` |
+| figuras do painel | 03 (`SALVAR_FIGURAS`) | `Site/restrito/graficos/` | `/Volumes/projetointegrador/projetointegrador/artefatos/graficos/` |
+
+Para atualizar o site localmente: rode 01 → 03 → 08 e, em `Site/`,
+`python preparar_dados.py`. No Databricks: 02 → 03 → 08 e, no site,
+**Fonte de dados → Testar → Ativar**.
+
+Cuidados:
+
+- As figuras têm **nomes fixos** (os que o site procura). Não renomeie sem ajustar
+  `PAINEL_EMPRESA` no `Site/app.py`.
+- O model card registra `sklearn_version`; o site avisa se a versão dele for
+  outra — o `.pkl` só abre com a mesma versão.
+- O volume `artefatos` precisa existir no Unity Catalog antes de rodar 03 e 08 no
+  Databricks (os notebooks criam só as subpastas).
+- Com `SOBRESCREVER = False`, o 08 recusa regravar o pacote de uma versão já
+  publicada. Para regerar a mesma versão, use `SOBRESCREVER = True`
+  conscientemente.
 
 ## O que ficou de fora
 
