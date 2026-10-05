@@ -165,7 +165,7 @@ venv.bak/
 .ropeproject
 
 # mkdocs documentation
-/site
+# /site  — desativado: no Windows (core.ignorecase=true) engolia a pasta Site/ inteira
 
 # mypy
 .mypy_cache/
@@ -216,3 +216,32 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ═══ Projeto PI6 — Chopp & Cia ═══════════════════════════════════════════════
+# Repositório público: nenhum dado da empresa entra no git (ver LGPD em
+# Desenvolvimento/documentos/). Dumps, bases derivadas, modelos e gráficos do EDA
+# ficam só na máquina e no Databricks.
+
+# dumps do ERP (Power Sys)
+Dados/
+*.sql
+*.bak
+
+# bases e artefatos gerados pelos notebooks
+Desenvolvimento/data/
+Desenvolvimento/modelos/
+Desenvolvimento/imagens/
+*.parquet
+*.pkl
+mlruns/
+mlartifacts/
+
+# site: base, modelo e gráficos com dado da empresa (instance/ já está acima)
+Site/data/
+Site/modelo/
+Site/restrito/
+
+# Windows / Office
+Thumbs.db
+desktop.ini
+~$*
