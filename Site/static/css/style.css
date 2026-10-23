@@ -1259,3 +1259,51 @@ pre {
 		transform: none !important;
 	}
 }
+
+/* ── Ordem do roteiro do vídeo ────────────────────────────── */
+/* Seções vizinhas com o mesmo fundo ganham um filete para não se fundirem */
+.section-light + .section-light {
+	border-top: 1px solid #e3e6ea;
+}
+.section-dark + .section-dark {
+	border-top: 1px solid var(--dark-line);
+}
+.section-dark .hipotese {
+	background: var(--dark-card);
+	border: 1px solid rgba(245, 176, 65, 0.35);
+}
+.lista-problema,
+.lista-objetivos {
+	padding-left: 1.2rem;
+	margin: 0;
+	color: rgba(255, 255, 255, 0.75);
+}
+.lista-problema li,
+.lista-objetivos li {
+	margin-bottom: 0.7rem;
+	line-height: 1.6;
+}
+.lista-objetivos li::marker {
+	color: var(--chopp-gold);
+	font-weight: 800;
+}
+.comparativo-alg {
+	border: 1px solid var(--dark-line);
+	border-radius: 10px;
+	padding: 12px;
+	height: 100%;
+}
+.comparativo-alg .metrica-valor {
+	font-size: 1.8rem;
+}
+.comparativo-campeao {
+	border-color: var(--chopp-gold);
+	background: rgba(245, 176, 65, 0.08);
+}
+.lista-conclusao li {
+	margin-bottom: 0.5rem;
+	line-height: 1.55;
+}
+.section-dark .risco-chip {
+	color: #212529;
+}

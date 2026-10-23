@@ -37,13 +37,12 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ms-auto align-items-xl-center">
-					<li class="nav-item"><a class="nav-link" href="#equipe">Equipe</a></li>
+					<li class="nav-item"><a class="nav-link" href="#equipe">Empresa</a></li>
 					<li class="nav-item"><a class="nav-link" href="#problema">Problema</a></li>
-					<li class="nav-item"><a class="nav-link" href="#evolucao">PI5 → PI6</a></li>
 					<li class="nav-item"><a class="nav-link" href="#pipeline">Pipeline</a></li>
-					<li class="nav-item"><a class="nav-link" href="#cenarios">Cenários</a></li>
-					<li class="nav-item"><a class="nav-link" href="#resultados">Modelo</a></li>
 					<li class="nav-item"><a class="nav-link" href="#lgpd">LGPD</a></li>
+					<li class="nav-item"><a class="nav-link" href="#cenarios">Cenários</a></li>
+					<li class="nav-item"><a class="nav-link" href="#evolucao">PI5 → PI6</a></li>
 					<li class="nav-item nav-divisor d-none d-xl-block" aria-hidden="true"></li>
 					<li class="nav-item">
 						<a class="nav-link" href="#painel">{% if not logado %}<i
@@ -53,6 +52,8 @@
 						<a class="nav-link" href="#simulador">{% if not logado %}<i
 								class="bi bi-lock-fill me-1 small"></i>{% endif %}Simulador</a>
 					</li>
+					<li class="nav-item nav-divisor d-none d-xl-block" aria-hidden="true"></li>
+					<li class="nav-item"><a class="nav-link" href="#resultados">Resultados</a></li>
 					{% if logado %}
 					<li class="nav-item dropdown ms-xl-2">
 						<a class="nav-link dropdown-toggle usuario-nav" href="#" role="button" data-bs-toggle="dropdown"
@@ -130,8 +131,8 @@
 			</div>
 
 			<div class="d-flex justify-content-center gap-3 flex-wrap">
-				<a href="#evolucao" class="btn btn-chopp btn-lg px-5 rounded-pill fw-bold">
-					<i class="bi bi-arrow-up-right-circle me-2"></i>O que evoluiu
+				<a href="#equipe" class="btn btn-chopp btn-lg px-5 rounded-pill fw-bold">
+					<i class="bi bi-arrow-down-circle me-2"></i>Conhecer o projeto
 				</a>
 				{% if logado %}
 				<a href="#simulador" class="btn btn-outline-light btn-lg px-5 rounded-pill fw-bold">
@@ -171,7 +172,7 @@
 		<div class="container">
 			<header class="secao-cabecalho" data-aos="fade-up">
 				<span class="secao-etiqueta bg-dark text-white">GRUPO A</span>
-				<h2 class="secao-titulo">Equipe</h2>
+				<h2 class="secao-titulo">A empresa e a equipe</h2>
 			</header>
 			{% set equipe = [
 			('Ana.png', 'Ana Elisa', 'Biomédica RT', 'https://www.linkedin.com/in/ana-elisa-rubinato-cavalheiro/',
@@ -182,10 +183,10 @@
 			'https://github.com/Brunofsaraujo'),
 			('Caio.png', 'Caio Corrá', 'Analista de BI', 'https://www.linkedin.com/in/caio-cesar-corra-bello/',
 			'https://github.com/CaioCorra'),
-			('Nicole.png', 'Nicole Fava', 'Comércio Exterior', 'https://www.linkedin.com/in/nicole-fava/',
-			'https://github.com/nicole-fava-pires'),
 			('Lucas.png', 'Lucas Camelo', 'Eng. Controle e Automação',
 			'https://www.linkedin.com/in/lucas-camelo-293192142/', 'https://github.com/LcsCamelo'),
+			('Nicole.png', 'Nicole Fava', 'Comércio Exterior', 'https://www.linkedin.com/in/nicole-fava/',
+			'https://github.com/nicole-fava-pires'),
 			] %}
 			<div class="row g-4 justify-content-center">
 				{% for foto, nome, cargo, linkedin, github in equipe %}
@@ -208,48 +209,21 @@
 				</div>
 				{% endfor %}
 			</div>
-		</div>
-	</section>
 
-	<!-- ═══════════════════════════════════ PROBLEMA ══════════════════════════════════ -->
-	<section id="problema" class="secao section-light">
-		<div class="container">
-			<div class="row align-items-center g-5">
+			<div class="row align-items-center g-5 mt-4 text-start" id="empresa">
 				<div class="col-lg-6" data-aos="fade-right">
-					<span class="secao-etiqueta bg-danger text-white">O PROBLEMA DE NEGÓCIO</span>
-					<h2 class="secao-titulo">Dois riscos na mesma venda</h2>
+					<span class="secao-etiqueta bg-danger text-white">ORGANIZAÇÃO PARCEIRA</span>
+					<h3 class="secao-titulo">Chopp &amp; Cia</h3>
 					<p class="secao-texto">
-						A distribuidora atende Ponta Porã (MS) e a região de fronteira com o Paraguai. Boa parte
-						dos clientes compra chopp a prazo e recebe a chopeira em comodato, então cada venda carrega
-						dois riscos: o <strong>financeiro</strong>, de atraso nas parcelas, e o <strong>de
-							ativo</strong>,
-						de o equipamento voltar fora do prazo.
+						Distribuidora de bebidas fundada em março de 2024 em Ponta Porã (MS), na fronteira seca com
+						Pedro Juan Caballero, no Paraguai. Vende principalmente chopp, para consumidores finais,
+						estabelecimentos comerciais e clientes dos dois lados da fronteira.
 					</p>
 					<p class="secao-texto">
-						A liberação de crédito e de equipamento era decidida caso a caso, sem um critério comum.
-						O projeto propõe um score que ordene os clientes por risco e apoie essa decisão.
+						Além da bebida, a empresa empresta <strong>chopeiras e cilindros de gás em comodato</strong>:
+						o equipamento vai com o pedido e precisa voltar depois do uso. A operação administra ao mesmo
+						tempo as vendas e a disponibilidade desses equipamentos.
 					</p>
-					<div class="row g-3 mt-1">
-						<div class="col-sm-6">
-							<div class="risco-chip border-danger">
-								<i class="bi bi-currency-dollar text-danger"></i>
-								<div><strong>Risco financeiro</strong><span>Atraso em parcelas de vendas</span></div>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="risco-chip border-warning">
-								<i class="bi bi-box-seam text-warning"></i>
-								<div><strong>Risco de ativo</strong><span>Chopeira devolvida fora do prazo</span></div>
-							</div>
-						</div>
-					</div>
-					<div class="hipotese mt-4">
-						<i class="bi bi-lightbulb-fill text-chopp"></i>
-						<p class="mb-0">
-							<strong>Hipótese:</strong> o histórico de compra, pagamento e comodato permite estimar a
-							chance de atraso <em>nos dois lados</em> sem usar a identidade do cliente.
-						</p>
-					</div>
 				</div>
 				<div class="col-lg-6" data-aos="fade-left">
 					<figure class="moldura-imagem mb-0">
@@ -263,169 +237,58 @@
 		</div>
 	</section>
 
-	<!-- ═══════════════════════════════════ EVOLUÇÃO PI5 → PI6 ═════════════════════════ -->
-	<section id="evolucao" class="secao section-dark text-white">
+	<!-- ═══════════════════════════════════ PROBLEMA ══════════════════════════════════ -->
+	<section id="problema" class="secao section-dark text-white">
 		<div class="container">
 			<header class="secao-cabecalho" data-aos="fade-up">
-				<span class="secao-etiqueta badge-chopp">PI5 → PI6</span>
-				<h2 class="secao-titulo">Ponto de partida e o que mudou</h2>
+				<span class="secao-etiqueta bg-danger text-white">O PROBLEMA &amp; OBJETIVOS</span>
+				<h2 class="secao-titulo">Dois riscos na mesma venda</h2>
 				<p class="secao-texto text-white-50">
-					O PI5 terminou com um modelo Random Forest servido por este site, a partir de três views do ERP.
-					No PI6 cada etapa foi revisada sobre uma extração nova, e a revisão encontrou problemas nos
-					dados e nas variáveis que alteram a leitura das métricas anteriores.
+					Boa parte dos clientes compra chopp a prazo e recebe a chopeira em comodato. Chamamos de
+					<strong class="text-white">risco integrado</strong> (ou dupla inadimplência) a soma dos dois
+					atrasos que podem acontecer na mesma venda.
 				</p>
 			</header>
-
-			<div class="row g-4 mb-5" data-aos="fade-up">
-				{% set evolucoes = [
-				('bi-funnel-fill', 'Dados revisados na origem', 'Três filtros do ERP passaram a ser aplicados: registro
-				ativo, pedido cancelado e tipo de operação. Antes, movimentação de comodato era contada como compra.',
-				['Filtros do ERP', 'Contrato de colunas']),
-				('bi-diagram-3-fill', 'Pipeline em 8 notebooks', 'Cada etapa virou um notebook autossuficiente,
-				executável no Windows ou no Databricks e versionado por DATA_VERSION.', ['Unity Catalog', 'MLflow']),
-				('bi-grid-3x3-gap-fill', 'Decisões medidas em grade', 'População, alvo, variáveis e algoritmo viraram
-				eixos de uma grade de experimentos, comparados pela mesma métrica.', ['216 validações', '24
-				experimentos']),
-				('bi-shield-lock-fill', 'Adequação à LGPD', 'A extração deixou de ler nomes e documentos. O site passou
-				a exigir login para dados da empresa e registra cada consulta.', ['Pseudonimização', 'Trilha de
-				auditoria']),
-				] %}
-				{% for icone, titulo, texto, tags in evolucoes %}
-				<div class="col-md-6 col-xl-3">
-					<div class="evo-card h-100">
-						<i class="bi {{ icone }}"></i>
-						<h3 class="h6">{{ titulo }}</h3>
-						<p>{{ texto }}</p>
-						<div class="evo-delta">{% for t in tags %}<span>{{ t }}</span>{% endfor %}</div>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-
-			<div class="tabela-evolucao-moldura" data-aos="fade-up">
-				<table class="table table-dark table-hover align-middle mb-0 tabela-evolucao">
-					<caption class="visually-hidden">Comparação entre o PI5 e o PI6</caption>
-					<thead>
-						<tr>
-							<th scope="col" style="width: 18%">Dimensão</th>
-							<th scope="col" style="width: 37%">Projeto Integrador 5</th>
-							<th scope="col" style="width: 45%">Projeto Integrador 6</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">Fonte</th>
-							<td data-rotulo="PI5">Backup do SQL Server (jan/2026), lido por 3 views do ERP</td>
-							<td data-rotulo="PI6">Dump <code>.sql</code> (ago/2026) lido em Python, com contrato fechado
-								de
-								colunas</td>
-						</tr>
-						<tr>
-							<th scope="row">Regras do ERP</th>
-							<td data-rotulo="PI5">Sem filtro de registro</td>
-							<td data-rotulo="PI6"><code>FL_ATIVO</code>, pedidos cancelados, só operações de venda e
-								cliente ativo
-								∩ pessoa ativa</td>
-						</tr>
-						<tr>
-							<th scope="row">População</th>
-							<td data-rotulo="PI5">Treino só com quem tinha mais de 2 compras</td>
-							<td data-rotulo="PI6">Todo cliente com ao menos 1 compra — o corte antigo ficou inviável com
-								a
-								contagem corrigida</td>
-						</tr>
-						<tr>
-							<th scope="row">Identificação</th>
-							<td data-rotulo="PI5">Nome do cliente no dataset e na tela do simulador</td>
-							<td data-rotulo="PI6">Só <code>ID_PESSOA</code>; nomes e documentos não são extraídos</td>
-						</tr>
-						<tr>
-							<th scope="row">Alvo</th>
-							<td data-rotulo="PI5">Atraso &gt; 20% no pagamento <strong>OU</strong> no comodato</td>
-							<td data-rotulo="PI6">Atraso &gt; 20% no pagamento <strong>E</strong> no comodato, escolhido
-								pela
-								grade</td>
-						</tr>
-						<tr>
-							<th scope="row">Variáveis</th>
-							<td data-rotulo="PI5">12, incluindo <code>MEDIA_DIAS_ATRASO_PAG/COM</code></td>
-							<td data-rotulo="PI6">{{ n_features or '—' }}: sem as duas colunas de vazamento e com 3
-								novas do ERP
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">Métrica de escolha</th>
-							<td data-rotulo="PI5">AUC e Recall</td>
-							<td data-rotulo="PI6"><strong>MCC</strong>, que só melhora quando as duas classes são bem
-								classificadas</td>
-						</tr>
-						<tr>
-							<th scope="row">Experimentos</th>
-							<td data-rotulo="PI5">3 algoritmos comparados em um notebook</td>
-							<td data-rotulo="PI6">MLflow no Databricks: estudos de hiperparâmetro (05–07) e grade de
-								cenários (08)
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">Modelo</th>
-							<td data-rotulo="PI5">Random Forest · AUC 0,992 · Recall 0,987</td>
-							<td data-rotulo="PI6">{{ algoritmo }} · MCC {{ h.get('mcc')|br(3) }} · AUC {{
-								h.get('roc_auc')|br(3)
-								}} em dados não vistos</td>
-						</tr>
-						<tr>
-							<th scope="row">Produção</th>
-							<td data-rotulo="PI5">Arquivo <code>.pkl</code> com métricas</td>
-							<td data-rotulo="PI6"><code>.pkl</code> com <em>model card</em>, carteira escorada e Model
-								Registry
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">Site</th>
-							<td data-rotulo="PI5">Aberto; o formulário enviava categorias desconhecidas pelo modelo
-								(“Pessoa
-								Física”, “Boleto”), ignoradas sem aviso</td>
-							<td data-rotulo="PI6">Login para dados da empresa; categorias lidas do próprio modelo e
-								validadas no
-								servidor</td>
-						</tr>
-						<tr>
-							<th scope="row">Gestão</th>
-							<td data-rotulo="PI5">Jira</td>
-							<td data-rotulo="PI6">Microsoft Planner</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-
-			<div class="callout-metrica p-4 rounded-4 mt-5" data-aos="fade-up">
-				<div class="row g-4 align-items-center">
-					<div class="col-lg-4 text-center">
-						<div class="text-white-50 small mb-2">AUC em dados não vistos</div>
-						<div class="d-flex justify-content-center align-items-center gap-3">
-							<div>
-								<div class="metrica-antes">0,992</div>
-								<div class="small text-white-50">PI5</div>
+			<div class="row g-5 align-items-stretch">
+				<div class="col-lg-6" data-aos="fade-right">
+					<h3 class="h5 fw-bold text-chopp mb-3"><i class="bi bi-exclamation-diamond me-2"></i>O problema</h3>
+					<div class="row g-3 mb-4">
+						<div class="col-sm-6">
+							<div class="risco-chip border-danger">
+								<i class="bi bi-currency-dollar text-danger"></i>
+								<div><strong>Risco financeiro</strong><span>Atraso em parcelas de vendas</span></div>
 							</div>
-							<i class="bi bi-arrow-right fs-2 text-chopp" aria-hidden="true"></i>
-							<div>
-								<div class="metrica-depois">{{ h.get('roc_auc')|br(3) }}</div>
-								<div class="small text-white-50">PI6</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="risco-chip border-warning">
+								<i class="bi bi-box-seam text-warning"></i>
+								<div><strong>Risco de ativo</strong><span>Chopeira ou cilindro devolvido fora do prazo</span></div>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-8">
-						<h3 class="h5 fw-bold text-chopp mb-2">Por que a métrica caiu</h3>
-						<p class="mb-2 text-white-50">
-							O modelo do PI5 recebia <code>MEDIA_DIAS_ATRASO</code> como entrada. Essa coluna é
-							maior que zero sempre que a taxa de atraso que define o alvo também é, então parte
-							do desempenho vinha de reproduzir a própria regra. A grade de cenários mediu o
-							efeito:
-							sem essas duas colunas o MCC cai, em média, <strong class="text-white">0,195</strong>.
-						</p>
-						<p class="mb-0 text-white-50">
-							O número do PI6 é menor, mas descreve o que o modelo consegue estimar a partir do
-							comportamento do cliente, sem acesso à resposta.
+					<ul class="lista-problema">
+						<li>O prejuízo pode vir dos dois lados: a venda não é recebida e o equipamento não volta a tempo
+							de atender o próximo pedido, que se perde.</li>
+						<li>O efeito cresce no pico de vendas, de setembro a dezembro, quando cobrança e devolução
+							recebem menos atenção.</li>
+						<li>A liberação de crédito e de equipamento era decidida caso a caso, sem um critério comum.</li>
+					</ul>
+				</div>
+				<div class="col-lg-6" data-aos="fade-left">
+					<h3 class="h5 fw-bold text-chopp mb-3"><i class="bi bi-bullseye me-2"></i>O objetivo</h3>
+					<ol class="lista-objetivos">
+						<li>Analisar o histórico de compras, pagamentos e comodatos de cada cliente.</li>
+						<li>Identificar, com aprendizado de máquina, padrões associados ao atraso financeiro e à
+							retenção de equipamentos.</li>
+						<li>Classificar a carteira em faixas de risco <strong class="text-success">baixo</strong>,
+							<strong class="text-warning">médio</strong> e <strong class="text-danger">alto</strong>
+							para apoiar decisões comerciais e logísticas.</li>
+					</ol>
+					<div class="hipotese mt-4">
+						<i class="bi bi-lightbulb-fill text-chopp"></i>
+						<p class="mb-0">
+							<strong>Hipótese:</strong> o histórico de compra, pagamento e comodato permite estimar a
+							chance de atraso <em>nos dois lados</em> sem usar a identidade do cliente.
 						</p>
 					</div>
 				</div>
@@ -437,7 +300,7 @@
 	<section id="pipeline" class="secao section-light">
 		<div class="container">
 			<header class="secao-cabecalho" data-aos="fade-up">
-				<span class="secao-etiqueta bg-dark text-white">ARQUITETURA</span>
+				<span class="secao-etiqueta bg-dark text-white">DESENVOLVIMENTO DA SOLUÇÃO</span>
 				<h2 class="secao-titulo">Do ERP à decisão</h2>
 				<p class="secao-texto">
 					A extração roda localmente sobre o dump do ERP; a modelagem e o registro dos experimentos, no
@@ -465,8 +328,8 @@
 			<p class="text-center small text-muted mt-3 mb-5" data-aos="fade-up">
 				<i class="bi bi-info-circle me-1"></i>Arquitetura atual: o modelo registrado no Databricks é exportado
 				como
-				<code>.pkl</code> e servido pelo Flask, como no PI5. O consumo direto pelo Model Serving do Databricks
-				está em avaliação.
+				<code>.pkl</code> e servido pelo Flask, como no PI5. A leitura direta do Databricks já está
+				implementada no site, mas fica desligada porque o projeto usa a edição gratuita da plataforma.
 			</p>
 
 			{% set notebooks = [
@@ -506,15 +369,18 @@
 			<div class="faixa-info mt-4" data-aos="fade-up">
 				<div class="row g-4">
 					<div class="col-lg-6">
-						<h3 class="faixa-titulo"><i class="bi bi-signpost-split text-chopp me-2"></i>Em que ordem os
-							notebooks são usados</h3>
+						<h3 class="faixa-titulo"><i class="bi bi-signpost-split text-chopp me-2"></i>Qual notebook
+							gera o quê</h3>
 						<ol class="faixa-passos">
-							<li><span class="nb-num">08</span><div><strong>Compara tudo.</strong> Testa as combinações
-									de clientes, regra de risco, variáveis e algoritmo e aponta a melhor.</div></li>
-							<li><span class="nb-num">04</span><div><strong>Fixa a escolha.</strong> Prepara os dados
-									definitivos com a combinação vencedora.</div></li>
-							<li><span class="nb-num">05–07</span><div><strong>Ajusta o detalhe.</strong> Cada
-									algoritmo é afinado sobre esses mesmos dados.</div></li>
+							<li><span class="nb-num">08</span><div><strong>Escolhe e entrega o modelo.</strong> Testa as
+									combinações de clientes, regra de risco, variáveis e algoritmo, treina o campeão,
+									gera a carteira escorada e registra o modelo no MLflow.</div></li>
+							<li><span class="nb-num">04</span><div><strong>Base de estudo.</strong> Partição 70/30 com a
+									regra de risco original (atraso &gt; 20% “OU”) e trava contra colunas que formam o
+									alvo.</div></li>
+							<li><span class="nb-num">05–07</span><div><strong>Estudos por algoritmo.</strong> Comparam
+									hiperparâmetros sobre a base do 04, na primeira versão dos dados. Não definem o
+									modelo de produção.</div></li>
 						</ol>
 					</div>
 					<div class="col-md-6 col-lg-3">
@@ -531,6 +397,62 @@
 						<div class="faixa-tecnico">sem <code>import</code> entre notebooks</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ═══════════════════════════════════ LGPD ══════════════════════════════════════ -->
+	<section id="lgpd" class="secao section-light">
+		<div class="container">
+			<header class="secao-cabecalho" data-aos="fade-up">
+				<span class="secao-etiqueta bg-success text-white">LEI 13.709/2018</span>
+				<h2 class="secao-titulo">LGPD no pipeline e no site</h2>
+				<p class="secao-texto">
+					Os dados são <strong>pessoais</strong>: parte da carteira é pessoa física, e o
+					<code>ID_PESSOA</code>
+					pode ser religado ao cadastro pela empresa. Retirar o nome os torna <strong>pseudonimizados</strong>
+					(art. 13, § 4º), não anônimos. Não são dados sensíveis (art. 5º, II).
+				</p>
+			</header>
+
+			{% set imp = dict(importancias) %}
+			{% set lgpd = [
+			('bi-funnel', 'Necessidade', 'art. 6º, III', 'A extração lê um contrato fechado de colunas. Nome, CPF, CNPJ,
+			RG, nascimento e endereço não são lidos; do endereço, só a cidade.'),
+			('bi-incognito', 'Pseudonimização', 'art. 13, § 4º', 'A unidade de análise é o ID_PESSOA em todas as etapas.
+			A reidentificação depende do ERP, mantido pela empresa.'),
+			('bi-shield-lock', 'Segurança do acesso', 'art. 46', 'Dados da empresa e consulta por cliente exigem login.
+			Senhas com hash, sessão de 15 minutos e bloqueio após 5 tentativas.'),
+			('bi-journal-check', 'Registro das operações', 'art. 37', 'Logins e consultas de ID ficam registrados com
+			usuário, data e origem. O registro é apagado após 180 dias.'),
+			('bi-person-check', 'Revisão humana', 'art. 20', 'O score apoia a decisão de crédito, que continua sendo de
+			uma pessoa. O cliente pode pedir revisão de decisão automatizada.'),
+			('bi-people', 'Não discriminação', 'art. 6º, IX', 'PERFIL (Estrangeiro) e CIDADE (Pedro Juan Caballero)
+			podem indicar nacionalidade de forma indireta. Pesam ' ~ ((imp.get('PERFIL', 0) * 100)|br(1)) ~ '% e ' ~
+			((imp.get('CIDADE', 0) * 100)|br(1)) ~ '% no modelo e devem ser monitorados.'),
+			] %}
+			<div class="row g-4">
+				{% for icone, titulo, artigo, texto in lgpd %}
+				<div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="{{ (loop.index0 % 3) * 60 }}">
+					<article class="lgpd-card h-100">
+						<div class="d-flex align-items-center justify-content-between mb-2">
+							<i class="bi {{ icone }} fs-3 text-success" aria-hidden="true"></i>
+							<span class="badge text-bg-light border">{{ artigo }}</span>
+						</div>
+						<h3 class="h5 fw-bold">{{ titulo }}</h3>
+						<p class="text-muted small mb-0">{{ texto }}</p>
+					</article>
+				</div>
+				{% endfor %}
+			</div>
+
+			<div class="aviso-publico mt-4" data-aos="fade-up">
+				<i class="bi bi-eye-slash-fill"></i>
+				<p class="mb-0">
+					<strong>O que esta página mostra sem login:</strong> método, arquitetura e qualidade do modelo.
+					Tamanho da carteira, faturamento, percentuais de risco e gráficos da análise exploratória são
+					dados da Chopp &amp; Cia e só aparecem para usuários autenticados.
+				</p>
 			</div>
 		</div>
 	</section>
@@ -736,137 +658,172 @@
 		</div>
 	</section>
 
-	<!-- ═══════════════════════════════════ MODELO ════════════════════════════════════ -->
-	<section id="resultados" class="secao section-dark text-white">
+	<!-- ═══════════════════════════════════ EVOLUÇÃO PI5 → PI6 ═════════════════════════ -->
+	<section id="evolucao" class="secao section-dark text-white">
 		<div class="container">
 			<header class="secao-cabecalho" data-aos="fade-up">
-				<span class="secao-etiqueta badge-chopp">MODELO EM PRODUÇÃO</span>
-				<h2 class="secao-titulo">Desempenho em dados não vistos</h2>
+				<span class="secao-etiqueta badge-chopp">PI5 → PI6</span>
+				<h2 class="secao-titulo">Ponto de partida e o que mudou</h2>
 				<p class="secao-texto text-white-50">
-					{{ algoritmo }} avaliado em 30% dos clientes, separados antes do treino, e depois re-treinado com
-					toda a base para o arquivo final.
+					O PI5 terminou com um modelo Random Forest servido por este site, a partir de três views do ERP.
+					No PI6 cada etapa foi revisada sobre uma extração nova, e a revisão encontrou problemas nos
+					dados e nas variáveis que alteram a leitura das métricas anteriores.
 				</p>
 			</header>
 
-			{% set cards_metrica = [
-			('MCC', h.get('mcc'), 'bi-bullseye', True, 'validação cruzada: ' ~ (cv.get('mcc')|br(3))),
-			('AUC-ROC', h.get('roc_auc'), 'bi-graph-up-arrow', False, 'validação cruzada: ' ~
-			(cv.get('roc_auc')|br(3))),
-			('Recall', h.get('recall'), 'bi-arrow-repeat', False, 'riscos identificados'),
-			('Precisão', h.get('precision'), 'bi-check-all', False, 'alertas corretos'),
-			('F1-Score', h.get('f1'), 'bi-crosshair', False, 'equilíbrio recall × precisão'),
-			('Acurácia bal.', h.get('balanced_accuracy'), 'bi-symmetry-vertical', False, 'média entre as classes'),
-			] %}
-			<div class="row g-3 justify-content-center mb-5" data-aos="zoom-in">
-				{% for nome, valor, icone, principal, sub in cards_metrica %}
-				<div class="col-6 col-md-4 col-xl-2">
-					<div class="metrica-card h-100 {{ 'metrica-principal' if principal }}">
-						{% if principal %}<span class="metrica-tag">Métrica principal</span>{% endif %}
-						<i class="bi {{ icone }} text-chopp fs-3 d-block mb-2" aria-hidden="true"></i>
-						<div class="metrica-valor">{{ valor|br(3) }}</div>
-						<div class="metrica-nome">{{ nome }}</div>
-						<div class="metrica-sub">{{ sub }}</div>
+			<div class="row g-4 mb-5" data-aos="fade-up">
+				{% set evolucoes = [
+				('bi-funnel-fill', 'Dados revisados na origem', 'Três filtros do ERP passaram a ser aplicados: registro
+				ativo, pedido cancelado e tipo de operação. Antes, movimentação de comodato era contada como compra.',
+				['Filtros do ERP', 'Contrato de colunas']),
+				('bi-diagram-3-fill', 'Pipeline em 8 notebooks', 'Cada etapa virou um notebook autossuficiente,
+				executável no Windows ou no Databricks e versionado por DATA_VERSION.', ['Unity Catalog', 'MLflow']),
+				('bi-grid-3x3-gap-fill', 'Decisões medidas em grade', 'População, alvo, variáveis e algoritmo viraram
+				eixos de uma grade de experimentos, comparados pela mesma métrica.', ['216 validações', '24
+				experimentos']),
+				('bi-shield-lock-fill', 'Adequação à LGPD', 'A extração deixou de ler nomes e documentos. O site passou
+				a exigir login para dados da empresa e registra cada consulta.', ['Pseudonimização', 'Trilha de
+				auditoria']),
+				] %}
+				{% for icone, titulo, texto, tags in evolucoes %}
+				<div class="col-md-6 col-xl-3">
+					<div class="evo-card h-100">
+						<i class="bi {{ icone }}"></i>
+						<h3 class="h6">{{ titulo }}</h3>
+						<p>{{ texto }}</p>
+						<div class="evo-delta">{% for t in tags %}<span>{{ t }}</span>{% endfor %}</div>
 					</div>
 				</div>
 				{% endfor %}
 			</div>
 
-			<div class="row g-4" data-aos="fade-up">
-				<div class="col-lg-6">
-					<div class="painel-escuro h-100">
-						<h3 class="h6 fw-bold text-chopp mb-3">Variáveis que mais pesam na decisão</h3>
-						{% for nome, valor in importancias %}
-						<div class="imp-linha">
-							<span class="imp-nome" title="{{ nome }}">{{ nome }}</span>
-							<span class="imp-trilha"><span class="imp-barra"
-									style="width: {{ (valor / imp_max * 100)|round(1) }}%"></span></span>
-							<span class="imp-valor">{{ (valor * 100)|br(1) }}%</span>
+			<div class="tabela-evolucao-moldura" data-aos="fade-up">
+				<table class="table table-dark table-hover align-middle mb-0 tabela-evolucao">
+					<caption class="visually-hidden">Comparação entre o PI5 e o PI6</caption>
+					<thead>
+						<tr>
+							<th scope="col" style="width: 18%">Dimensão</th>
+							<th scope="col" style="width: 37%">Projeto Integrador 5</th>
+							<th scope="col" style="width: 45%">Projeto Integrador 6</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">Fonte</th>
+							<td data-rotulo="PI5">Backup do SQL Server (jan/2026), lido por 3 views do ERP</td>
+							<td data-rotulo="PI6">Dump <code>.sql</code> (ago/2026) lido em Python, com contrato fechado
+								de
+								colunas</td>
+						</tr>
+						<tr>
+							<th scope="row">Regras do ERP</th>
+							<td data-rotulo="PI5">Sem filtro de registro</td>
+							<td data-rotulo="PI6"><code>FL_ATIVO</code>, pedidos cancelados, só operações de venda e
+								cliente ativo
+								∩ pessoa ativa</td>
+						</tr>
+						<tr>
+							<th scope="row">População</th>
+							<td data-rotulo="PI5">Treino só com quem tinha mais de 2 compras</td>
+							<td data-rotulo="PI6">Todo cliente com ao menos 1 compra — o corte antigo ficou inviável com
+								a
+								contagem corrigida</td>
+						</tr>
+						<tr>
+							<th scope="row">Identificação</th>
+							<td data-rotulo="PI5">Nome do cliente no dataset e na tela do simulador</td>
+							<td data-rotulo="PI6">Só <code>ID_PESSOA</code>; nomes e documentos não são extraídos</td>
+						</tr>
+						<tr>
+							<th scope="row">Alvo</th>
+							<td data-rotulo="PI5">Atraso &gt; 20% no pagamento <strong>OU</strong> no comodato</td>
+							<td data-rotulo="PI6">Atraso &gt; 20% no pagamento <strong>E</strong> no comodato, escolhido
+								pela
+								grade</td>
+						</tr>
+						<tr>
+							<th scope="row">Variáveis</th>
+							<td data-rotulo="PI5">12, incluindo <code>MEDIA_DIAS_ATRASO_PAG/COM</code></td>
+							<td data-rotulo="PI6">{{ n_features or '—' }}: sem as duas colunas de vazamento e com 3
+								novas do ERP
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">Métrica de escolha</th>
+							<td data-rotulo="PI5">AUC e Recall</td>
+							<td data-rotulo="PI6"><strong>MCC</strong>, que só melhora quando as duas classes são bem
+								classificadas</td>
+						</tr>
+						<tr>
+							<th scope="row">Experimentos</th>
+							<td data-rotulo="PI5">3 algoritmos comparados em um notebook</td>
+							<td data-rotulo="PI6">MLflow no Databricks: estudos de hiperparâmetro (05–07) e grade de
+								cenários (08)
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">Modelo</th>
+							<td data-rotulo="PI5">Random Forest · AUC 0,992 · Recall 0,987</td>
+							<td data-rotulo="PI6">{{ algoritmo }} · MCC {{ h.get('mcc')|br(3) }} · AUC {{
+								h.get('roc_auc')|br(3)
+								}} em dados não vistos</td>
+						</tr>
+						<tr>
+							<th scope="row">Produção</th>
+							<td data-rotulo="PI5">Arquivo <code>.pkl</code> com métricas</td>
+							<td data-rotulo="PI6"><code>.pkl</code> com <em>model card</em>, carteira escorada e Model
+								Registry
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">Site</th>
+							<td data-rotulo="PI5">Aberto; o formulário enviava categorias desconhecidas pelo modelo
+								(“Pessoa
+								Física”, “Boleto”), ignoradas sem aviso</td>
+							<td data-rotulo="PI6">Login para dados da empresa; categorias lidas do próprio modelo e
+								validadas no
+								servidor</td>
+						</tr>
+						<tr>
+							<th scope="row">Gestão</th>
+							<td data-rotulo="PI5">Jira</td>
+							<td data-rotulo="PI6">Microsoft Planner</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="callout-metrica p-4 rounded-4 mt-5" data-aos="fade-up">
+				<div class="row g-4 align-items-center">
+					<div class="col-lg-4 text-center">
+						<div class="text-white-50 small mb-2">AUC em dados não vistos</div>
+						<div class="d-flex justify-content-center align-items-center gap-3">
+							<div>
+								<div class="metrica-antes">0,992</div>
+								<div class="small text-white-50">PI5</div>
+							</div>
+							<i class="bi bi-arrow-right fs-2 text-chopp" aria-hidden="true"></i>
+							<div>
+								<div class="metrica-depois">{{ h.get('roc_auc')|br(3) }}</div>
+								<div class="small text-white-50">PI6</div>
+							</div>
 						</div>
-						{% endfor %}
-						<p class="small text-white-50 mt-3 mb-0">Importância do Random Forest em produção; nas
-							categóricas, soma das colunas de cada categoria.</p>
+					</div>
+					<div class="col-lg-8">
+						<h3 class="h5 fw-bold text-chopp mb-2">Por que a métrica caiu</h3>
+						<p class="mb-2 text-white-50">
+							O modelo do PI5 recebia <code>MEDIA_DIAS_ATRASO</code> como entrada. Essa coluna é
+							maior que zero sempre que a taxa de atraso que define o alvo também é, então parte
+							do desempenho vinha de reproduzir a própria regra. A grade de cenários mediu o
+							efeito:
+							sem essas duas colunas o MCC cai, em média, <strong class="text-white">0,195</strong>.
+						</p>
+						<p class="mb-0 text-white-50">
+							O número do PI6 é menor, mas descreve o que o modelo consegue estimar a partir do
+							comportamento do cliente, sem acesso à resposta.
+						</p>
 					</div>
 				</div>
-				<div class="col-lg-6">
-					<div class="painel-escuro h-100">
-						<h3 class="h6 fw-bold text-chopp mb-3">Como ler o score</h3>
-						{% set faixas = [('BAIXO', 'success', 'abaixo de 35%', 'Liberar dentro da política padrão'),
-						('MÉDIO', 'warning', 'de 35% a 65%', 'Exigir entrada ou acompanhar de perto'), ('ALTO',
-						'danger', '65% ou mais', 'Exigir garantias antes de liberar')] %}
-						{% for nome, cor, faixa, acao in faixas %}
-						<div class="faixa-linha border-{{ cor }}">
-							<span class="fw-bold text-{{ cor }}">{{ nome }}</span>
-							<span class="text-white-50 small"> · probabilidade {{ faixa }}</span>
-							<div class="small text-white-50">{{ acao }}</div>
-						</div>
-						{% endfor %}
-						<p class="small text-white-50 mt-3 mb-0"><i class="bi bi-person-check me-1"></i>O score orienta
-							a conversa de crédito; a decisão final é de uma pessoa (LGPD, art. 20).</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="limites mt-4" data-aos="fade-up">
-				<strong class="text-white"><i class="bi bi-info-circle me-1"></i>Limites conhecidos.</strong>
-				Variáveis e alvo vêm da mesma janela de tempo: o modelo identifica o perfil de quem atrasa, mas não
-				foi testado em prever atrasos futuros. O desvio do MCC entre folds é de ±0,047; diferenças menores
-				que isso entre cenários não devem ser lidas como superioridade.
-			</div>
-		</div>
-	</section>
-
-	<!-- ═══════════════════════════════════ LGPD ══════════════════════════════════════ -->
-	<section id="lgpd" class="secao section-light">
-		<div class="container">
-			<header class="secao-cabecalho" data-aos="fade-up">
-				<span class="secao-etiqueta bg-success text-white">LEI 13.709/2018</span>
-				<h2 class="secao-titulo">LGPD no pipeline e no site</h2>
-				<p class="secao-texto">
-					Os dados são <strong>pessoais</strong>: parte da carteira é pessoa física, e o
-					<code>ID_PESSOA</code>
-					pode ser religado ao cadastro pela empresa. Retirar o nome os torna <strong>pseudonimizados</strong>
-					(art. 13, § 4º), não anônimos. Não são dados sensíveis (art. 5º, II).
-				</p>
-			</header>
-
-			{% set imp = dict(importancias) %}
-			{% set lgpd = [
-			('bi-funnel', 'Necessidade', 'art. 6º, III', 'A extração lê um contrato fechado de colunas. Nome, CPF, CNPJ,
-			RG, nascimento e endereço não são lidos; do endereço, só a cidade.'),
-			('bi-incognito', 'Pseudonimização', 'art. 13, § 4º', 'A unidade de análise é o ID_PESSOA em todas as etapas.
-			A reidentificação depende do ERP, mantido pela empresa.'),
-			('bi-shield-lock', 'Segurança do acesso', 'art. 46', 'Dados da empresa e consulta por cliente exigem login.
-			Senhas com hash, sessão de 15 minutos e bloqueio após 5 tentativas.'),
-			('bi-journal-check', 'Registro das operações', 'art. 37', 'Logins e consultas de ID ficam registrados com
-			usuário, data e origem. O registro é apagado após 180 dias.'),
-			('bi-person-check', 'Revisão humana', 'art. 20', 'O score apoia a decisão de crédito, que continua sendo de
-			uma pessoa. O cliente pode pedir revisão de decisão automatizada.'),
-			('bi-people', 'Não discriminação', 'art. 6º, IX', 'PERFIL (Estrangeiro) e CIDADE (Pedro Juan Caballero)
-			podem indicar nacionalidade de forma indireta. Pesam ' ~ ((imp.get('PERFIL', 0) * 100)|br(1)) ~ '% e ' ~
-			((imp.get('CIDADE', 0) * 100)|br(1)) ~ '% no modelo e devem ser monitorados.'),
-			] %}
-			<div class="row g-4">
-				{% for icone, titulo, artigo, texto in lgpd %}
-				<div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="{{ (loop.index0 % 3) * 60 }}">
-					<article class="lgpd-card h-100">
-						<div class="d-flex align-items-center justify-content-between mb-2">
-							<i class="bi {{ icone }} fs-3 text-success" aria-hidden="true"></i>
-							<span class="badge text-bg-light border">{{ artigo }}</span>
-						</div>
-						<h3 class="h5 fw-bold">{{ titulo }}</h3>
-						<p class="text-muted small mb-0">{{ texto }}</p>
-					</article>
-				</div>
-				{% endfor %}
-			</div>
-
-			<div class="aviso-publico mt-4" data-aos="fade-up">
-				<i class="bi bi-eye-slash-fill"></i>
-				<p class="mb-0">
-					<strong>O que esta página mostra sem login:</strong> método, arquitetura e qualidade do modelo.
-					Tamanho da carteira, faturamento, percentuais de risco e gráficos da análise exploratória são
-					dados da Chopp &amp; Cia e só aparecem para usuários autenticados.
-				</p>
 			</div>
 		</div>
 	</section>
@@ -875,7 +832,7 @@
 	<section id="painel" class="secao section-dark text-white">
 		<div class="container">
 			<header class="secao-cabecalho" data-aos="fade-up">
-				<span class="secao-etiqueta badge-chopp"><i class="bi bi-lock-fill me-1"></i>ÁREA RESTRITA</span>
+				<span class="secao-etiqueta badge-chopp"><i class="bi bi-lock-fill me-1"></i>DEMONSTRAÇÃO · ÁREA RESTRITA</span>
 				<h2 class="secao-titulo">Painel da carteira</h2>
 				<p class="secao-texto text-white-50">
 					Números da base de agosto/2026 e da análise exploratória refeita no PI6.
@@ -1012,7 +969,7 @@
 	<section id="simulador" class="secao section-light">
 		<div class="container">
 			<header class="secao-cabecalho" data-aos="fade-up">
-				<span class="secao-etiqueta bg-dark text-white"><i class="bi bi-lock-fill me-1"></i>ÁREA RESTRITA</span>
+				<span class="secao-etiqueta bg-dark text-white"><i class="bi bi-lock-fill me-1"></i>DEMONSTRAÇÃO · ÁREA RESTRITA</span>
 				<h2 class="secao-titulo">Simulador de risco</h2>
 				<p class="secao-texto">
 					Informe o <strong>ID_PESSOA</strong> para carregar o perfil de um cliente da carteira, ou preencha
@@ -1174,6 +1131,153 @@
 		</div>
 	</section>
 
+	<!-- ═══════════════════════════════════ MODELO ════════════════════════════════════ -->
+	<section id="resultados" class="secao section-dark text-white">
+		<div class="container">
+			<header class="secao-cabecalho" data-aos="fade-up">
+				<span class="secao-etiqueta badge-chopp">RESULTADOS &amp; CONCLUSÃO</span>
+				<h2 class="secao-titulo">Desempenho em dados não vistos</h2>
+				<p class="secao-texto text-white-50">
+					{{ algoritmo }} avaliado em 30% dos clientes, separados antes do treino, e depois re-treinado com
+					toda a base para o arquivo final.
+				</p>
+			</header>
+
+			{% set comparativo = [('Regressão Logística', 0.435, 0.455), ('Árvore de Decisão', 0.415, 0.700),
+			('Random Forest', 0.485, 0.716)] %}
+			<div class="painel-escuro mb-4" data-aos="fade-up">
+				<h3 class="h6 fw-bold text-chopp mb-3">Comparativo dos três algoritmos · MCC médio na validação cruzada
+				</h3>
+				<div class="row g-3 text-center">
+					{% for nome, limpo, vazado in comparativo %}
+					<div class="col-md-4">
+						<div class="comparativo-alg {{ 'comparativo-campeao' if loop.last }}">
+							<div class="small fw-bold">{% if loop.last %}<i
+									class="bi bi-trophy-fill text-chopp me-1"></i>{% endif %}{{ nome }}</div>
+							<div class="metrica-valor">{{ limpo|br(3) }}</div>
+							<div class="small text-white-50">sem vazamento · com vazamento: {{ vazado|br(3) }}</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+				<p class="small text-white-50 mt-3 mb-0">O valor com vazamento é maior porque o modelo recebia colunas
+					derivadas do próprio atraso. O modelo de produção foi escolhido sem essas colunas.</p>
+			</div>
+
+			{% set cards_metrica = [
+			('MCC', h.get('mcc'), 'bi-bullseye', True, 'validação cruzada: ' ~ (cv.get('mcc')|br(3))),
+			('AUC-ROC', h.get('roc_auc'), 'bi-graph-up-arrow', False, 'validação cruzada: ' ~
+			(cv.get('roc_auc')|br(3))),
+			('Recall', h.get('recall'), 'bi-arrow-repeat', False, 'riscos identificados'),
+			('Precisão', h.get('precision'), 'bi-check-all', False, 'alertas corretos'),
+			('F1-Score', h.get('f1'), 'bi-crosshair', False, 'equilíbrio recall × precisão'),
+			('Acurácia bal.', h.get('balanced_accuracy'), 'bi-symmetry-vertical', False, 'média entre as classes'),
+			] %}
+			<div class="row g-3 justify-content-center mb-5" data-aos="zoom-in">
+				{% for nome, valor, icone, principal, sub in cards_metrica %}
+				<div class="col-6 col-md-4 col-xl-2">
+					<div class="metrica-card h-100 {{ 'metrica-principal' if principal }}">
+						{% if principal %}<span class="metrica-tag">Métrica principal</span>{% endif %}
+						<i class="bi {{ icone }} text-chopp fs-3 d-block mb-2" aria-hidden="true"></i>
+						<div class="metrica-valor">{{ valor|br(3) }}</div>
+						<div class="metrica-nome">{{ nome }}</div>
+						<div class="metrica-sub">{{ sub }}</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+
+			<div class="row g-4" data-aos="fade-up">
+				<div class="col-lg-6">
+					<div class="painel-escuro h-100">
+						<h3 class="h6 fw-bold text-chopp mb-3">Variáveis que mais pesam na decisão</h3>
+						{% for nome, valor in importancias %}
+						<div class="imp-linha">
+							<span class="imp-nome" title="{{ nome }}">{{ nome }}</span>
+							<span class="imp-trilha"><span class="imp-barra"
+									style="width: {{ (valor / imp_max * 100)|round(1) }}%"></span></span>
+							<span class="imp-valor">{{ (valor * 100)|br(1) }}%</span>
+						</div>
+						{% endfor %}
+						<p class="small text-white-50 mt-3 mb-0">Importância do Random Forest em produção; nas
+							categóricas, soma das colunas de cada categoria.</p>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="painel-escuro h-100">
+						<h3 class="h6 fw-bold text-chopp mb-3">Como ler o score</h3>
+						{% set faixas = [('BAIXO', 'success', 'abaixo de 35%', 'Liberar dentro da política padrão'),
+						('MÉDIO', 'warning', 'de 35% a 65%', 'Exigir entrada ou acompanhar de perto'), ('ALTO',
+						'danger', '65% ou mais', 'Exigir garantias ou pagamento antecipado (Pix)')] %}
+						{% for nome, cor, faixa, acao in faixas %}
+						<div class="faixa-linha border-{{ cor }}">
+							<span class="fw-bold text-{{ cor }}">{{ nome }}</span>
+							<span class="text-white-50 small"> · probabilidade {{ faixa }}</span>
+							<div class="small text-white-50">{{ acao }}</div>
+						</div>
+						{% endfor %}
+						<p class="small text-white-50 mt-3 mb-0"><i class="bi bi-person-check me-1"></i>O score orienta
+							a conversa de crédito; a decisão final é de uma pessoa (LGPD, art. 20).</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="limites mt-4" data-aos="fade-up">
+				<strong class="text-white"><i class="bi bi-info-circle me-1"></i>Limites conhecidos.</strong>
+				Variáveis e alvo vêm da mesma janela de tempo: o modelo identifica o perfil de quem atrasa, mas não
+				foi testado em prever atrasos futuros. O desvio do MCC entre folds é de ±0,047; diferenças menores
+				que isso entre cenários não devem ser lidas como superioridade.
+			</div>
+		</div>
+	</section>
+
+	<!-- ═══════════════════════════════════ CONCLUSÃO ═════════════════════════════════ -->
+	<section id="conclusao" class="secao section-light">
+		<div class="container">
+			<header class="secao-cabecalho" data-aos="fade-up">
+				<span class="secao-etiqueta bg-dark text-white">CONSIDERAÇÕES FINAIS</span>
+				<h2 class="secao-titulo">O que o projeto entrega e o que falta</h2>
+				<p class="secao-texto">
+					O projeto saiu de um protótipo local no PI5 para um pipeline reproduzível no Databricks, com
+					Delta Lake, Unity Catalog e MLflow, que gera a carteira classificada em faixas de risco.
+				</p>
+			</header>
+			{% set conclusao = [
+			('bi-graph-up-arrow', 'success', 'Benefícios potenciais', [
+			'Apontar os clientes que pedem mais atenção no pagamento e na devolução do equipamento.',
+			'Dar um critério comum para liberar crédito e comodato.',
+			'Os ganhos financeiros ainda não foram medidos: a solução não passou por um ciclo de operação.']),
+			('bi-exclamation-triangle', 'warning', 'Limitações', [
+			'Variáveis e alvo vêm da mesma janela de tempo; o modelo não foi testado em prever atrasos
+			futuros.',
+			'A integração do site com o Databricks está pronta e testada, mas não fica em uso: o projeto roda na
+			edição gratuita da plataforma e não haverá upgrade de plano. Em operação, o site usa o pacote
+			.pkl exportado pelo notebook 08.']),
+			('bi-signpost-2', 'primary', 'Próximos passos', [
+			'Ativar a fonte Databricks no site, caso a empresa adote um plano pago.',
+			'Acompanhar o desempenho do modelo com dados novos.',
+			'Com plano pago, avaliar também o consumo pelo Databricks Model Serving.',
+			'Monitorar periodicamente o data drift e retreinar quando necessário.']),
+			] %}
+			<div class="row g-4">
+				{% for icone, cor, titulo, itens in conclusao %}
+				<div class="col-lg-4" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 60 }}">
+					<article class="cartao h-100 border-top border-4 border-{{ cor }}">
+						<i class="bi {{ icone }} fs-3 text-{{ cor }}" aria-hidden="true"></i>
+						<h3 class="h5 fw-bold mt-2">{{ titulo }}</h3>
+						<ul class="small text-muted ps-3 mb-0 lista-conclusao">
+							{% for item in itens %}<li>{{ item }}</li>{% endfor %}
+						</ul>
+					</article>
+				</div>
+				{% endfor %}
+			</div>
+			<p class="text-center mt-5 mb-0 secao-texto" data-aos="fade-up">
+				Agradecemos à Chopp &amp; Cia pela parceria e ao professor orientador.
+			</p>
+		</div>
+	</section>
+
 	<!-- ═══════════════════════════════════ FOOTER ════════════════════════════════════ -->
 	<footer class="rodape">
 		<div class="container">
@@ -1188,8 +1292,9 @@
 				</div>
 				<div class="col-6 col-lg-3">
 					<div class="rodape-titulo">Projeto</div>
-					<a href="#evolucao">PI5 → PI6</a><a href="#pipeline">Arquitetura</a><a
-						href="#cenarios">Cenários</a><a href="#resultados">Modelo</a>
+					<a href="#problema">Problema</a><a href="#pipeline">Arquitetura</a><a
+						href="#cenarios">Cenários</a><a href="#evolucao">PI5 → PI6</a><a
+						href="#resultados">Resultados</a><a href="#conclusao">Conclusão</a>
 				</div>
 				<div class="col-6 col-lg-4">
 					<div class="rodape-titulo">Versão</div>

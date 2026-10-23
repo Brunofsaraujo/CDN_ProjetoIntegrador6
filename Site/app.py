@@ -76,8 +76,12 @@ PAINEL_EMPRESA = {
         ("Consolidado do ERP", 1429, ""),
         ("Com ao menos 1 compra", 1281, "população de modelagem"),
         ("Core business (chopp/chopeira)", 1279, ""),
-        ("Core + 2 ou mais compras", 584, "classe rara: 23 casos"),
-        ("Core + 3 ou mais compras", 332, "classe rara: 6 casos — inviável"),
+        ("Core + 2 ou mais compras", 584, "classe rara com alvo OU: 23 casos"),
+        (
+            "Core + 3 ou mais compras",
+            332,
+            "classe rara com alvo OU: 6 casos — inviável",
+        ),
     ],
     "correcao": [
         ("Frequência de compras", "−51%"),

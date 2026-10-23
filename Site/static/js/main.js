@@ -164,7 +164,7 @@ function iniciarSimulador(cfg) {
 			BAIXO: '<span class="badge bg-success px-3 py-2">Liberar dentro da política padrão</span>',
 			MÉDIO:
 				'<span class="badge bg-warning text-dark px-3 py-2">Exigir entrada ou acompanhar de perto</span>',
-			ALTO: '<span class="badge bg-danger px-3 py-2">Exigir garantias antes de liberar</span>',
+			ALTO: '<span class="badge bg-danger px-3 py-2">Exigir garantias ou pagamento antecipado (Pix)</span>',
 		}[nivel];
 
 		const linhas = [...cfg.numericas, ...cfg.categoricas]
